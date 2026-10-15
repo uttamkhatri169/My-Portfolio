@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon } from "@/components/icons";
 
 export default function SocialSidebar() {
   const [isLightSection, setIsLightSection] = useState(false);

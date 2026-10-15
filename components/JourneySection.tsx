@@ -6,7 +6,6 @@ import {
   Sparkles,
   Briefcase,
   GraduationCap,
-  Award,
   Calendar,
   Building2,
   CheckCircle2,

@@ -6,9 +6,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Download, Play, Pause, Volume2, VolumeX } from "lucide-react";
 
-interface HeroSectionProps {}
-
-export default function HeroSection({}: HeroSectionProps) {
+export default function HeroSection() {
   const [isPlayingReel, setIsPlayingReel] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);

@@ -127,10 +127,17 @@ interface CertificationsSectionProps {
   onModalToggle?: (isOpen: boolean) => void;
 }
 
+type CredentialFilter = "all" | "certification" | "internship";
+
 export default function CertificationsSection({ onModalToggle }: CertificationsSectionProps) {
-  const [filter, setFilter] = useState<"all" | "certification" | "internship">("all");
+  const [filter, setFilter] = useState<CredentialFilter>("all");
   const [selectedCred, setSelectedCred] = useState<Certificate | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const filterTabs: { key: CredentialFilter; label: string }[] = [
+    { key: "all", label: "All Credentials (4)" },
+    { key: "certification", label: "Industry Certifications (2)" },
+    { key: "internship", label: "Internship Experience (2)" },
+  ];
 
   // Notify parent page so Navbar automatically slides up/hides
   useEffect(() => {
@@ -240,14 +247,10 @@ export default function CertificationsSection({ onModalToggle }: CertificationsS
             transition={{ delay: 0.3 }}
             className="flex flex-wrap items-center justify-center gap-2.5 pt-3"
           >
-            {[
-              { key: "all", label: "All Credentials (4)" },
-              { key: "certification", label: "Industry Certifications (2)" },
-              { key: "internship", label: "Internship Experience (2)" },
-            ].map((tab) => (
+            {filterTabs.map((tab) => (
               <button
                 key={tab.key}
-                onClick={() => setFilter(tab.key as any)}
+                onClick={() => setFilter(tab.key)}
                 className={`px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-sora font-bold transition-all duration-300 cursor-pointer ${
                   filter === tab.key
                     ? "bg-white text-black shadow-2xl scale-105"
